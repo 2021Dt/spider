@@ -20,7 +20,7 @@ Bot/
 node_modules/
 
 # 忽略 img 目录下的所有文件和文件夹
-img/
+#img/
 
 # .idea 目录下的所有文件和文件夹
 .idea/
