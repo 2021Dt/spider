@@ -16,6 +16,12 @@
 
 `Function.prototype` 是 `JavaScript` 中所有函数的原型对象，所有函数都可以访问它定义的方法和属性
 
+```js
+function Person(){}
+var p = new Person();
+console.log(Person.prototype);	// prototype是用来访问方法作为构造方法时的原型
+console.log(p.__proto__);	// __proto__是用来访问对象的原型的
+```
 
 ### 如何编写 JavaScript Hook：详细步骤和示例
 1. 确定你希望拦截哪个对象的哪些方法或属性。例如，我们想监控 `document.cookie` 的设置和获取。
@@ -143,6 +149,18 @@ Function.prototype.constructor = function (string) {
   window.eval.toString = eval_.toString;
 })();
 
+```
+
+#### Hook setInterval debugger
+```js
+// Hook setInterval
+var setInterval_ = setInterval
+setInterval = function (func, time){
+    if (time == 2000) {
+        return function () {};
+    }
+    return setInterval_(func, time)
+}
 ```
 
 ### URL Hook
